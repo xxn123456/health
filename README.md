@@ -1,24 +1,21 @@
-# health
+## 远程诊断-实时监控大屏
+++联系方式qq:2363577442 薯条 如果喜欢给我点个赞吧++
 
-## Project setup
-```
-npm install
-```
+> 简介 
+1、基于vue2 + socket.io +echart 进行搭建
+2、数据15s，从阿里云远程接收并更新
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+> 后续 
+迭代计划-待定
+线上预览地址
 
-### Lints and fixes files
-```
-npm run lint
+``` js
+
+http://shutiaogege.top/health/#/his
+
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](http://upload.shutiaogege.top/github/博客启动.png)
+![](http://upload.shutiaogege.top/github/博客实时.png)
+![](http://upload.shutiaogege.top/github/博客接受.png)
