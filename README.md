@@ -16,6 +16,6 @@ http://shutiaogege.top/health/#/his
 
 ```
 
-![](http://upload.shutiaogege.top/github/博客启动.png)
-![](http://upload.shutiaogege.top/github/博客实时.png)
-![](http://upload.shutiaogege.top/github/博客接受.png)
+![](http://upload.shutiaogege.top/github/大屏启动.png)
+![](http://upload.shutiaogege.top/github/大屏实时.png)
+![](http://upload.shutiaogege.top/github/大屏接受.png)
