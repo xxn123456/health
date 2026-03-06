@@ -1,103 +1,126 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
-    <sidebar class="sidebar-container" />
-    <div :class="{hasTagsView:needTagsView}" class="main-container">
-      <div :class="{'fixed-header':fixedHeader}">
-        <navbar />
-        <tags-view v-if="needTagsView" />
-      </div>
-      <app-main />
-      <right-panel v-if="showSettings">
-        <settings />
-      </right-panel>
+  <div class="big-wrap-all">
+    <div class="new-cont-warp">
+      <router-view></router-view>
     </div>
+    <div id="particles-js"></div>
   </div>
 </template>
-
 <script>
-import RightPanel from '@/components/RightPanel'
-import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
-import { mapState } from 'vuex'
-
+// // 粒子效果
+import particlesJs from "particles.js";
+import particlesConfig from "@/util/particles.json";
 export default {
-  name: 'Layout',
-  components: {
-    AppMain,
-    Navbar,
-    RightPanel,
-    Settings,
-    Sidebar,
-    TagsView
+  data() {
+    return {};
   },
-  mixins: [ResizeMixin],
-  computed: {
-    ...mapState({
-      sidebar: state => state.app.sidebar,
-      device: state => state.app.device,
-      showSettings: state => state.settings.showSettings,
-      needTagsView: state => state.settings.tagsView,
-      fixedHeader: state => state.settings.fixedHeader
-    }),
-    classObj() {
-      return {
-        hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
-    }
+  mounted() {
+    this.init();
   },
-  methods: {
-    handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
-    }
-  }
-}
+  init() {
+    particlesJs("particles-js", particlesConfig);
+  },
+};
 </script>
+<style>
+@import "./particle.css";
+.big-wrap-all {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #090e4e;
+  position: relative;
+  overflow: hidden;
+}
 
-<style lang="scss" scoped>
-  @import "~@/styles/mixin.scss";
-  @import "~@/styles/variables.scss";
+.new-cont-warp {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
 
-  .app-wrapper {
-    @include clearfix;
-    position: relative;
-    height: 100%;
-    width: 100%;
+.big-wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
 
-    &.mobile.openSidebar {
-      position: fixed;
-      top: 0;
-    }
-   
-  }
+.top {
+  width: 98%;
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 26px;
+  color: #fff;
+  background-image: url("../assets/newtop1.png");
+  background-size: 100% 100%;
+  overflow: hidden;
+  background-position: center;
+  margin: 5px auto 15px auto;
+}
 
-  .drawer-bg {
-    background: #000;
-    opacity: 0.3;
-    width: 100%;
-    top: 0;
-    height: 100%;
-    position: absolute;
-    z-index: 999;
-  }
+.cont {
+  width: 100%;
+  height: calc(100% - 120px);
+}
 
-  .fixed-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 9;
-    width: calc(100% - #{$sideBarWidth});
-    transition: width 0.28s;
-  }
+.bottom {
+  width: 100%;
+  height: 40px;
+  padding-bottom: 10px;
+  line-height: 40px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #ffffff;
+  overflow: hidden;
+}
 
-  .hideSidebar .fixed-header {
-    width: calc(100% - 54px)
-  }
+.bottom-company {
+  margin-top: 4px;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
 
-  .mobile .fixed-header {
-    width: 100%;
-  }
+.bottom img {
+  max-height: 60%;
+}
+
+.sm {
+  font-size: 12px;
+  height: 60%;
+  line-height: 30px;
+}
+
+.d-top {
+  height: 36px;
+  line-height: 36px;
+  width: calc(100% - 20px);
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.d-cont {
+  width: 100%;
+  height: calc(100% - 36px);
+}
+
+.edition {
+  font-size: 12px;
+  margin-left: 10px;
+}
 </style>
