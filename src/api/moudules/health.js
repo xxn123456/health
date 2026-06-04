@@ -1,6 +1,4 @@
 import request from '@/util/request.js'
-
-
 export function queryHis() {
   return request({
     url:'/health/his',

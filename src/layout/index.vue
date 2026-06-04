@@ -3,27 +3,20 @@
     <div class="new-cont-warp">
       <router-view></router-view>
     </div>
-    <div id="particles-js"></div>
   </div>
 </template>
 <script>
-// // 粒子效果
-import particlesJs from "particles.js";
-import particlesConfig from "@/util/particles.json";
 export default {
   data() {
     return {};
   },
   mounted() {
-    this.init();
   },
-  init() {
-    particlesJs("particles-js", particlesConfig);
-  },
+  methods: {
+  }
 };
 </script>
 <style>
-@import "./particle.css";
 .big-wrap-all {
   width: 100vw;
   height: 100vh;
